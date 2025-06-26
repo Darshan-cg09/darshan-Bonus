@@ -101,8 +101,7 @@ async function initializeDatabase() {
 }
 
 // Start server
-initializeDatabase().then(() => {
-  app.listen(port, () => {
-    console.log(`Server running at http://0.0.0.0:${port}`);
-  });
+app.listen(port, '0.0.0.0', async () => {
+  await initializeDatabase();
+  console.log(`Server running on http://0.0.0.0:${port}`);
 });
